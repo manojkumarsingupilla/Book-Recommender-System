@@ -13,14 +13,16 @@ RUN apt-get update && apt-get install -y \
 # Set working directory
 WORKDIR /app
 
-# Copy only necessary files to avoid large .git and LFS objects
-COPY requirements.txt ./           
+# Copy project files first (setup.py, requirements.txt, etc.)
+COPY requirements.txt setup.py README.md ./
+
+# Copy the rest of your app
 COPY app.py ./                     
 COPY templates/ ./templates/      
-COPY artifacts/ ./artifacts/       
-# Add any other directories you need explicitly
+COPY artifacts/ ./artifacts/      
+COPY books_recommender/ ./books_recommender/
 
-# Install Python dependencies
+# Install Python dependencies (this will now work with -e .)
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Run Streamlit app
