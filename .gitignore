@@ -6,6 +6,12 @@ __pycache__/
 # C extensions
 *.so
 
+# Ignore large data files
+artifacts/dataset/ingested_data/Books.csv
+notebooks/Books.csv
+artifacts/artifacts/
+
+
 # Distribution / packaging
 .Python
 build/
