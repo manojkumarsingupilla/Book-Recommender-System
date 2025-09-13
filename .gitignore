@@ -9,7 +9,11 @@ __pycache__/
 # Ignore large data files
 artifacts/dataset/ingested_data/Books.csv
 notebooks/Books.csv
-artifacts/artifacts/
+artifacts/dataset/raw_data/
+artifacts/dataset/clean_data/
+artifacts/dataset/transformed_data/
+artifacts/serialized_objects/
+artifacts/trained_model/
 
 
 # Distribution / packaging
