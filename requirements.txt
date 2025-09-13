@@ -4,4 +4,3 @@ numpy
 flask
 PyYAML
 streamlit
--e .
