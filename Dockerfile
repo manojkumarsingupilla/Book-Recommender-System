@@ -16,11 +16,13 @@ WORKDIR /app
 # Copy project files first (setup.py, requirements.txt, etc.)
 COPY requirements.txt setup.py README.md ./
 
-# Copy the rest of your app
+# Copy project files
+COPY requirements.txt ./           
 COPY app.py ./                     
 COPY templates/ ./templates/      
-COPY artifacts/ ./artifacts/      
-COPY books_recommender/ ./books_recommender/
+COPY artifacts/ ./artifacts/       
+COPY books_recommender/ ./books_recommender/  
+COPY setup.py ./ 
 
 # Install Python dependencies (this will now work with -e .)
 RUN pip install --no-cache-dir -r requirements.txt
