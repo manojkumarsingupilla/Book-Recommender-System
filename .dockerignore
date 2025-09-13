@@ -1,12 +1,29 @@
+# Python environment folders
 .env
-.venv
+.venv/
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
-notebook/
+
+# Jupyter notebooks
+notebooks/
+
+# Git metadata (ignore everything under .git except LFS pointer files)
 .git
 .gitignore
 .gitmodules
+
+# Git LFS objects (Docker will fetch the actual files via git clone / git lfs pull)
 .git/lfs
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
