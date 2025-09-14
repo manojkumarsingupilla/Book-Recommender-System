@@ -13,19 +13,17 @@ RUN apt-get update && apt-get install -y \
 # Set working directory
 WORKDIR /app
 
-# Copy project files first (setup.py, requirements.txt, etc.)
+# Copy dependency files first (better caching)
 COPY requirements.txt setup.py README.md ./
 
-# Copy project files
-COPY requirements.txt ./           
-COPY app.py ./                     
-COPY templates/ ./templates/      
-COPY artifacts/ ./artifacts/       
-COPY books_recommender/ ./books_recommender/  
-COPY setup.py ./ 
-
-# Install Python dependencies (this will now work with -e .)
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the actual project code
+COPY app.py ./
+COPY templates/ ./templates/
+COPY artifacts/ ./artifacts/
+COPY books_recommender/ ./books_recommender/
 
 # Run Streamlit app
 ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
